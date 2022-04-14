@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My table</title>
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+</head>
+<body>
+    <h2>{{header_one}}</h2>
+    <table>
+        <tr>
+            <th>Номер дела</th>
+            <th>Время слушания</th>
+            <th>Информация по делу</th>
+            <th>Человек, называющий себя "судья"</th>
+            <th>Результат слушания</th>
+        </tr>
+        <tr>
+            <th>{{number_case}}</th>
+            <th>{{time_court_session}}</th>
+            <th>{{case_info}}</th>
+            <th>{{fake_judge}}</th>
+            <th>{{result_court}}</th>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <h2>Детали</h2>
+    {{details}}
+
+    
+</body>
+
+</html>
