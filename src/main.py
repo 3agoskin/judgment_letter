@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 from jinja2 import Template
 
-import email_sender
+from src.utils.helper_email import send_email
 
 driver = Chrome('PATH')
 
@@ -55,12 +55,12 @@ def main():
 
                 date_court_session = f'{day}.{month}.{dt.year}'
                 header_one = f'Дорогая {" ".join(full_name_accused.split()[1:])}, приглашаем Вас {date_court_session} в г. Ханты-Мансийск, ул. Ленина, д. 63 к {information[1]} на мероприятие под названием "суд по административному делу"!'
-                with open('templates/template-msg.html', 'r') as f:
+                with open('templates/email.html', 'r') as f:
                     page = Template(f.read())
                 message = page.render(header_one=header_one, number_case=information[0], time_court_session=information[1], \
                                     case_info=information[2], fake_judge=information[3], result_court=information[4], details=details)
                 
-                email_sender.send_email(email_accused, message, date_court_session)
+                send_email(email_accused, message, date_court_session)
                 print('send email', date_court_session)
             
 
